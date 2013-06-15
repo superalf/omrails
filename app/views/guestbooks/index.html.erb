@@ -1,0 +1,22 @@
+<h1>Listing guestbook</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Text</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @guestbooks.each do |guestbook| %>
+  <tr>
+    <td><%= guestbook.name %></td>
+    <td><%= guestbook.text %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Guestbook commment', new_guestbook_path %>

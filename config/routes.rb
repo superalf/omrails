@@ -1,5 +1,8 @@
 Omrails::Application.routes.draw do
   
+  resources :guestbooks
+
+
   get "users/show"
 
   resources :pins
