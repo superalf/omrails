@@ -27,13 +27,6 @@ class GuestbooksController < ApplicationController
     @guestbook = Guestbook.new
 
     respond_to do |format|
-      if verify_recaptcha
-      format.html # new.html.erb
-      format.json { render json: @guestbook }
-else
-  flash[:error] = "There was an error with the recaptcha code below. Please re-enter the code and click submit." 
-  render :action => 'new'
-end 
       format.html # new.html.erb
       format.json { render json: @guestbook }
     end
@@ -50,14 +43,15 @@ end
     @guestbook = Guestbook.new(params[:guestbook])
 
     respond_to do |format|
-      if @guestbook.save
+
+if verify_recaptcha() and @guestbook.save
         format.html { redirect_to @guestbook, notice: 'Guestbook was successfully created.' }
         format.json { render json: @guestbook, status: :created, location: @guestbook }
-      else
+else
         format.html { render action: "new" }
         format.json { render json: @guestbook.errors, status: :unprocessable_entity }
-      end
-    end
+end
+end
   end
 
   # PUT /guestbooks/1

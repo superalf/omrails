@@ -1,21 +1,18 @@
 <h1>Listing guestbook</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Text</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div id="comments">
 <% @guestbooks.each do |guestbook| %>
-  <tr>
-    <td><%= guestbook.name %></td>
-    <td><%= guestbook.text %></td>
-  </tr>
+  <div class="comment">
+    <div class="name">
+      <%= guestbook.name %>
+    </div>
+    <div>
+      <%= guestbook.text %>
+    </div>
+
+  </div>
 <% end %>
-</table>
+</div>
 
 <br />
 
